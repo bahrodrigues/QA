@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import testes2.WebDriverWait;
@@ -14,6 +15,8 @@ import testes2.WebDriverWait;
 public class createcontacts {
     
     WebDriver driver;
+    String firstName = "Marcos";
+    String lastName = "Rodrigues";
    
     @BeforeSuite
     public void login(){
@@ -56,16 +59,16 @@ public class createcontacts {
         driver.findElement(By.xpath("//button[text()='New' and @type='button']")).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='firstName']"))); 
-        driver.findElement(By.xpath("//input[@name='firstName']")).sendKeys("Marcela");
+        driver.findElement(By.xpath("//input[@name='firstName']")).sendKeys(firstName);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='lastName']"))); 
-        driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys("Caixeta");
+        driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys(lastName);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='Phone']"))); 
         driver.findElement(By.xpath("//input[@name='Phone']")).sendKeys("67367289");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='Email']"))); 
-        driver.findElement(By.xpath("//input[@name='Email']")).sendKeys("teste@teste.com");
+        driver.findElement(By.xpath("//input[@name='Email']")).sendKeys("teste2@teste.com");
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Save' and @type='button']"))); 
         driver.findElement(By.xpath("//button[text()='Save' and @type='button']")).click();
@@ -80,51 +83,44 @@ public class createcontacts {
         // driver.get("https://dhp000003szikma4-dev-ed.develop.lightning.force.com/lightning/page/home");
         // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-        WebElement username = driver.findElement(By.id("username"));
-        username.click();
-        username.sendKeys("bdasilva@salesforce1.com");
+        // WebElement username = driver.findElement(By.id("username"));
+        // username.click();
+        // username.sendKeys("bdasilva@salesforce1.com");
 
-        WebElement password = driver.findElement(By.id("password"));
-        password.click();
-        password.sendKeys("Salesforce1");
+        // WebElement password = driver.findElement(By.id("password"));
+        // password.click();
+        // password.sendKeys("Salesforce1");
 
-        WebElement login = driver.findElement(By.id("Login"));
-        login.click();
+        // WebElement login = driver.findElement(By.id("Login"));
+        // login.click();
 
-        WebElement button = driver.findElement(By.xpath("//span[text()='Contacts']/parent::a[contains(@href,'lightning/o/Contact/home')]"));    
-        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", button);
+        // WebElement button = driver.findElement(By.xpath("//span[text()='Contacts']/parent::a[contains(@href,'lightning/o/Contact/home')]"));    
+        // ((JavascriptExecutor)driver).executeScript("arguments[0].click();", button);
         
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title=\"Rose Gonzalez\"]")));
-        WebElement search = driver.findElement(By.xpath("//a[@title=\"Rose Gonzalez\"]"));
-        search.click();
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title=\"Marcos Rodrigues\"]")));
+        // WebElement search = driver.findElement(By.xpath("//a[@title=\"Marcos Rodrigues\"]"));
+        // search.click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[@title=\"Details\"]")));
         WebElement details = driver.findElement(By.xpath("//li[@title=\"Details\"]"));
         details.click();
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='test-id__inline-edit-trigger slds-shrink-none inline-edit-trigger slds-button slds-button_icon-bare' and @title='Edit Title']")));
-        WebElement buttonTitle = driver.findElement(By.xpath("//button[@class='test-id__inline-edit-trigger slds-shrink-none inline-edit-trigger slds-button slds-button_icon-bare' and @title='Edit Title']"));
-        buttonTitle.click();
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='test-id__inline-edit-trigger slds-shrink-none inline-edit-trigger slds-button slds-button_icon-bare' and @title='Edit Title']")));
+        // WebElement buttonTitle = driver.findElement(By.xpath("//button[@class='test-id__inline-edit-trigger slds-shrink-none inline-edit-trigger slds-button slds-button_icon-bare' and @title='Edit Title']"));
+        // buttonTitle.click();
 
         //until here is clicking in Title Button
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='Title']")));
-        WebElement Title = driver.findElement(By.xpath("//input[@name='Title']"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='slds-form']//span[text()='Name']/../following-sibling::div//*[@slot='outputField']")));
+        WebElement Name = driver.findElement(By.xpath("//div[@class='slds-form']//span[text()='Name']/../following-sibling::div//*[@slot='outputField']"));
 
-        String textInsidetitleBox = Title.getAttribute("value");
+        String textInsidetitleBox = Name.getText();
 
         // Check whether input field is blank
-
-        if(textInsidetitleBox.isEmpty())
-        {
-            System.out.println("Input field is empty");
-        }
-        else
-        {
-            System.out.println(textInsidetitleBox);
-        }
+        
+        Assert.assertEquals(firstName+""+lastName, textInsidetitleBox, "The name is not the same");
     }
 }
 
