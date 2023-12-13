@@ -1,14 +1,12 @@
 package testes;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import testes2.WebDriverWait;
@@ -21,9 +19,9 @@ public class createcontacts {
     public void login(){
 
         System.setProperty("webdriver.chrome,driver","\\Users\\bdasilva\\Documents\\java\\dem\\src\\drivers\\chromedriver");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get("https://dhp000003szikma4-dev-ed.develop.lightning.force.com/lightning/page/home");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
         WebElement username = driver.findElement(By.id("username"));
         username.click();
@@ -77,10 +75,10 @@ public class createcontacts {
     @Test
     public void verifyFieldisEmpyt(){
 
-         System.setProperty("webdriver.chrome,driver","\\Users\\bdasilva\\Documents\\java\\dem\\src\\drivers\\chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://dhp000003szikma4-dev-ed.develop.lightning.force.com/lightning/page/home");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        //  System.setProperty("webdriver.chrome,driver","\\Users\\bdasilva\\Documents\\java\\dem\\src\\drivers\\chromedriver");
+        // WebDriver driver = new ChromeDriver();
+        // driver.get("https://dhp000003szikma4-dev-ed.develop.lightning.force.com/lightning/page/home");
+        // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         WebElement username = driver.findElement(By.id("username"));
         username.click();
