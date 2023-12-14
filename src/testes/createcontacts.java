@@ -120,7 +120,32 @@ public class createcontacts {
 
         // Check whether input field is blank
         
-        Assert.assertEquals(firstName+""+lastName, textInsidetitleBox, "The name is not the same");
+        Assert.assertEquals(firstName+" "+lastName, textInsidetitleBox, "The name is not the same");
     }
+
+    @Test
+    public void useglobalsearch(){
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='slds-grid slds-size_1-of-1 slds-grid--align-center forceSearchAssistant']//button")));
+        WebElement globalSearch = driver.findElement(By.xpath("//div[@class='slds-grid slds-size_1-of-1 slds-grid--align-center forceSearchAssistant']//button"));
+        globalSearch.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='slds-input' and @type='search']")));
+        WebElement globalSearch2 = driver.findElement(By.xpath("//input[@class='slds-input' and @type='search']"));
+        globalSearch2.sendKeys(firstName+" "+lastName);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='slds-text-link--reset slds-grid slds-grid--vertical-align-center slds-truncate instant-result-item slds-p-left_small slds-p-vertical_x-small focused']")));
+        WebElement viewAllResults = driver.findElement(By.xpath("//div[@class='slds-text-link--reset slds-grid slds-grid--vertical-align-center slds-truncate instant-result-item slds-p-left_small slds-p-vertical_x-small focused']"));
+        viewAllResults.click();
+
+
+    }
+    //global search
+    //delete the contact
+    //first and last name should be random value
+   
+
 }
 
