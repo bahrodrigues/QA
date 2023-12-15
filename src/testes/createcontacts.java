@@ -136,9 +136,22 @@ public class createcontacts {
         WebElement globalSearch2 = driver.findElement(By.xpath("//input[@class='slds-input' and @type='search']"));
         globalSearch2.sendKeys(firstName+" "+lastName);
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='slds-text-link--reset slds-grid slds-grid--vertical-align-center slds-truncate instant-result-item slds-p-left_small slds-p-vertical_x-small focused']")));
-        WebElement viewAllResults = driver.findElement(By.xpath("//div[@class='slds-text-link--reset slds-grid slds-grid--vertical-align-center slds-truncate instant-result-item slds-p-left_small slds-p-vertical_x-small focused']"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Show more results')]")));
+        WebElement viewAllResults = driver.findElement(By.xpath(" //span[contains(text(),'Show more results')]"));
         viewAllResults.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='slds-col scopesItem_name slds-truncate' and text()='Contacts']")));
+        WebElement clickContacts = driver.findElement(By.xpath("//span[@class='slds-col scopesItem_name slds-truncate' and text()='Contacts']"));
+        clickContacts.click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Marcos Rodrigues']")));
+        WebElement clickContact = driver.findElement(By.xpath("//a[@title='Marcos Rodrigues']"));
+        clickContact.click();
+
+       
+        ///span[@class='slds-text-body--regular slds-text-color--default slds-truncate slds-show']//span[contains(text(),'Show more results')]
+
+        //trying to find the xpath of the Saerch Results to 'Contacts'
 
 
     }
