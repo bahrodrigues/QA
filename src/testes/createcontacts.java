@@ -125,6 +125,8 @@ public class createcontacts {
 
     @Test
     public void useglobalsearch(){
+
+        //globalsearch
         
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
@@ -148,15 +150,23 @@ public class createcontacts {
         WebElement clickContact = driver.findElement(By.xpath("//a[@title='Marcos Rodrigues']"));
         clickContact.click();
 
-       
-        ///span[@class='slds-text-body--regular slds-text-color--default slds-truncate slds-show']//span[contains(text(),'Show more results')]
-
-        //trying to find the xpath of the Saerch Results to 'Contacts'
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']")));
+        WebElement clickArrow = driver.findElement(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']"));
+        clickArrow.click();
 
 
     }
-    //global search
+
+    @Test
+    public void deletecontact(){
+
     //delete the contact
+
+    //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+
+        
+    }
     //first and last name should be random value
    
 
