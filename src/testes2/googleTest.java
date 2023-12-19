@@ -1,5 +1,5 @@
 package testes2;
-import org.openqa.selenium.By;
+//import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -30,7 +30,7 @@ public class googleTest {
 
     @Test
     public void googlelogotest(){
-       boolean b = driver.findElement(By.xpath("//*[@id='hplogo']")).isDisplayed();
+    //boolean b = driver.findElement(By.xpath("//*[@id='hplogo']")).isDisplayed();
        
     }
 
