@@ -145,7 +145,7 @@ public class createcontacts {
         clickContacts.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Marcos Rodrigues']")));
-        WebElement clickContact = driver.findElement(By.xpath("//a[@title='Marcos Rodrigues']"));
+        WebElement clickContact = driver.findElement(By.xpath("//a[@title='"+firstName+" "+lastName+"']"));
         clickContact.click();
 
        
