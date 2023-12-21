@@ -130,29 +130,26 @@ public class createcontacts {
         
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='slds-grid slds-size_1-of-1 slds-grid--align-center forceSearchAssistant']//button")));
-        WebElement globalSearch = driver.findElement(By.xpath("//div[@class='slds-grid slds-size_1-of-1 slds-grid--align-center forceSearchAssistant']//button"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Search...']")));
+        WebElement globalSearch = driver.findElement(By.xpath("//button[text()='Search...']"));
         globalSearch.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@class='slds-input' and @type='search']")));
-        WebElement globalSearch2 = driver.findElement(By.xpath("//input[@class='slds-input' and @type='search']"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@placeholder,'Search') and @class='slds-input' and @type='search' and @maxlength='100']")));
+        WebElement globalSearch2 = driver.findElement(By.xpath("//input[contains(@placeholder,'Search') and @class='slds-input' and @type='search' and @maxlength='100']"));
         globalSearch2.sendKeys(firstName+" "+lastName);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Show more results')]")));
-        WebElement viewAllResults = driver.findElement(By.xpath(" //span[contains(text(),'Show more results')]"));
+        WebElement viewAllResults = driver.findElement(By.xpath("//span[contains(text(),'Show more results')]"));
         viewAllResults.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='slds-col scopesItem_name slds-truncate' and text()='Contacts']")));
         WebElement clickContacts = driver.findElement(By.xpath("//span[@class='slds-col scopesItem_name slds-truncate' and text()='Contacts']"));
         clickContacts.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='Marcos Rodrigues']")));
-        WebElement clickContact = driver.findElement(By.xpath("//a[@title='Marcos Rodrigues']"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@title='"+firstName+" "+lastName+"']")));
+        WebElement clickContact = driver.findElement(By.xpath("//a[@title='"+firstName+" "+lastName+"']"));
         clickContact.click();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']")));
-        WebElement clickArrow = driver.findElement(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']"));
-        clickArrow.click();
 
 
     }
@@ -162,7 +159,26 @@ public class createcontacts {
 
     //delete the contact
 
-    //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    driver.get("https://dhp000003szikma4-dev-ed.develop.lightning.force.com/lightning/r/Contact/003Hp00002rtOyOIAU/view");
+
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    
+    WebElement clickArrow = driver.findElement(By.xpath("//li[@class='slds-dropdown-trigger slds-dropdown-trigger_click slds-button_last overflow']"));
+    wait.until(ExpectedConditions.visibilityOf(clickArrow));
+    clickArrow.click();
+
+    WebElement deleteContact = driver.findElement(By.xpath("//span[text()='Delete']"));
+    wait.until(ExpectedConditions.visibilityOf(deleteContact));
+    deleteContact.click();
+    
+    WebElement clickDelete = driver.findElement(By.xpath("//span[text()='Delete' and @class=' label bBody']"));
+    wait.until(ExpectedConditions.visibilityOf(clickDelete));
+    clickDelete.click();
+
+    
+   
+
+    
 
 
         
