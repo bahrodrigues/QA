@@ -1,6 +1,8 @@
 package testes;
 
 import java.time.Duration;
+import java.util.Random;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+java.util.Random;
+
+import net.bytebuddy.utility.RandomString;
 import testes2.WebDriverWait;
 
 public class createcontacts {
@@ -174,16 +179,12 @@ public class createcontacts {
     WebElement clickDelete = driver.findElement(By.xpath("//span[text()='Delete' and @class=' label bBody']"));
     wait.until(ExpectedConditions.visibilityOf(clickDelete));
     clickDelete.click();
-
-    
-   
-
-    
-
-
         
     }
     //first and last name should be random value
+
+
+
    
 
 }
